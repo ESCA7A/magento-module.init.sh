@@ -15,7 +15,7 @@ echo -n 'module name: '
 read MODULE
 
 echo -n 'create composer json? <yes> or skip: '
-read isYes
+read isCreateComposer
 
 del="_"
 modulexml=("<?xml version=\"1.0\"?>\n\n<config xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"urn:magento:framework:Module/etc/module.xsd\">\n\t<module name=\"$VENDOR$del$MODULE\"/>\n</config>")
@@ -27,7 +27,7 @@ echo -e $modulexml > src/app/code/$VENDOR/$MODULE/etc/module.xml
 
 echo -e $registration > src/app/code/$VENDOR/$MODULE/registration.php
 
-if [[ $isYes == 'yes' ]]
+if [[ $isCreateComposer == 'yes' ]]
   then
     cd src/app/code/$VENDOR/$MODULE
     composer init
